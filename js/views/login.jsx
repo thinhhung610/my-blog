@@ -1,12 +1,8 @@
 import React       from 'react';
-import { browserHistory } from 'react-router';
 import BasicInput  from 'appRoot/components/basicInput';
 import Actions     from 'appRoot/actions';
 
 export default React.createClass({
-	mixins: [
-		// History
-	],
 	getInitialState: function () { return {}; },
 	logIn: function (e) {
 		var detail = {};
@@ -19,7 +15,7 @@ export default React.createClass({
 		e.preventDefault();
 		e.stopPropagation();
 
-		Actions.login(detail.username, detail.password)
+		/*Actions.login(detail.username, detail.password)
 			.then(function () {
 				//console.log("SUCCESS", arguments);
 				// this.history.pushState('', '/');
@@ -29,7 +25,8 @@ export default React.createClass({
 				//console.log("ERROR", arguments);
 				this.setState({'loginError': 'bad username or password'});
 			}.bind(this))
-			;
+			;*/
+		Actions.login(detail.username, detail.password);
 	},
 	render: function () {
 		return (

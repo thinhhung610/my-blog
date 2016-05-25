@@ -1,8 +1,9 @@
 "use strict";
 
 import Reflux from 'reflux';
+import { browserHistory } from 'react-router';
 
-export default Reflux.createActions({
+var Actions = Reflux.createActions({
 	'getPost': {
 		asyncResult: true
 	},
@@ -10,7 +11,8 @@ export default Reflux.createActions({
 		asyncResult: true
 	},
 	'login': {
-		asyncResult: true
+		asyncResult: true,
+		children: ['completed', 'failed']
 	},
 	'logOut': {},
 	'createUser': {
@@ -20,5 +22,21 @@ export default Reflux.createActions({
 		asyncResult: true
 	},
 	'search': {},
-	'getSessionContext': {} 
+	'getSessionContext': {}
 });
+
+Reflux.createStore({
+	listenables: Actions,
+	onLogin: function() {
+		console.log(123);
+	},
+	onLoginCompleted: function() {
+		console.log("SUCCESS", arguments);
+		browserHistory.push('/');
+	},
+	onLoginFailed: function() {
+		console.log("ERROR", arguments);
+	}
+});
+
+export default Actions;

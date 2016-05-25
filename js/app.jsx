@@ -2,7 +2,7 @@
 
 import React     from 'react';
 import ReactDom  from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import CSS       from '../css/app.less';
 import AppHeader from 'appRoot/views/appHeader';
 import Login     from 'appRoot/views/login';
@@ -72,4 +72,4 @@ let routes = (
     </Route>
 );
 
-ReactDom.render(<Router history={hashHistory}>{routes}</Router>, document.getElementById('app'));
+ReactDom.render(<Router history={browserHistory}>{routes}</Router>, document.getElementById('app'));

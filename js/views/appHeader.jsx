@@ -14,7 +14,7 @@ export default React.createClass({
 	logOut: function () {
 		Actions.logOut();
 		// this.history.pushState('', '/');
-    browserHistory.push('', '/');
+    browserHistory.push('/login');
 	},
 	render: function () {
 		return (
