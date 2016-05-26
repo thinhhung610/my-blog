@@ -2,7 +2,7 @@
 
 import React             from 'react';
 import Reflux            from 'reflux';
-import { Link, browserHistory } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 import Actions           from 'appRoot/actions';
 import SessionStore      from 'appRoot/stores/sessionContext';
 
@@ -14,7 +14,7 @@ export default React.createClass({
 	logOut: function () {
 		Actions.logOut();
 		// this.history.pushState('', '/');
-    browserHistory.push('/login');
+    hashHistory.push('/login');
 	},
 	render: function () {
 		return (

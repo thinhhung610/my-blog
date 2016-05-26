@@ -1,7 +1,7 @@
 "use strict";
 
 import Reflux from 'reflux';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 var Actions = Reflux.createActions({
 	'getPost': {
@@ -32,7 +32,7 @@ Reflux.createStore({
 	},
 	onLoginCompleted: function() {
 		console.log("SUCCESS", arguments);
-		browserHistory.push('/');
+		hashHistory.push('/');
 	},
 	onLoginFailed: function() {
 		console.log("ERROR", arguments);

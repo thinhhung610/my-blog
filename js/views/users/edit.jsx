@@ -1,7 +1,7 @@
 "use strict";
 
 import React        from 'react';
-import { browserHistory }  from 'react-router';
+import { hashHistory }  from 'react-router';
 import Reflux       from 'reflux';
 import update       from 'react-addons-update';
 import BasicInput   from 'appRoot/components/basicInput';
@@ -75,7 +75,7 @@ export default React.createClass({
 				.then(function (result) {
 					// go to newly created entry
 					// this.history.pushState('', `/users/${result.id}`);
-					browserHistory.push('', `/users/${result.id}`);
+					hashHistory.push('', `/users/${result.id}`);
 				}.bind(this))
 			;
 		}

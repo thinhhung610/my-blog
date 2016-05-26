@@ -2,7 +2,7 @@
 
 import React     from 'react';
 import ReactDom  from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import CSS       from '../css/app.less';
 import AppHeader from 'appRoot/views/appHeader';
 import Login     from 'appRoot/views/login';
@@ -29,47 +29,47 @@ let AppLayout = React.createClass({
 });
 
 let routes = (
-    <Route path="/" component={ AppLayout }>
-		<IndexRoute component={ PostList } />
-        <Route
-			path="posts/:pageNum/?"
-			component={ PostList }
-			ignoreScrollBehavior
-		/>
-		<Route
-			path="/posts/create"
-			component={ PostEdit }
-		/>
-		<Route
-			path="/posts/:postId/edit"
-			component={ PostEdit }
-		/>
-        <Route
-			path="posts/:postId"
-			component={ PostView }
-		/>
-		<Route
-			path="/users"
-			component={ UserList }
-		/>
-		<Route
-			path="/users/create"
-			component={ UserEdit }
-		/>
-		<Route
-			path="/users/:userId"
-			component={ UserView }
-		/>
-		<Route
-			path="/users/:userId/edit"
-			component={ UserEdit }
-		/>
-		<Route
-			path="/login"
-			component={ Login }
-		/>
-		<Route path="*" component={ PostList } />
-    </Route>
+  <Route path="/" component={ AppLayout }>
+  		<IndexRoute component={ PostList } />
+      <Route
+  			path="posts/:pageNum/?"
+  			component={ PostList }
+  			ignoreScrollBehavior
+  		/>
+  		<Route
+  			path="/posts/create"
+  			component={ PostEdit }
+  		/>
+  		<Route
+  			path="/posts/:postId/edit"
+  			component={ PostEdit }
+  		/>
+          <Route
+  			path="posts/:postId"
+  			component={ PostView }
+  		/>
+  		<Route
+  			path="/users"
+  			component={ UserList }
+  		/>
+  		<Route
+  			path="/users/create"
+  			component={ UserEdit }
+  		/>
+  		<Route
+  			path="/users/:userId"
+  			component={ UserView }
+  		/>
+  		<Route
+  			path="/users/:userId/edit"
+  			component={ UserEdit }
+  		/>
+  		<Route
+  			path="/login"
+  			component={ Login }
+  		/>
+  		<Route path="*" component={ PostList } />
+  </Route>
 );
 
-ReactDom.render(<Router history={browserHistory}>{routes}</Router>, document.getElementById('app'));
+ReactDom.render(<Router history={hashHistory}>{routes}</Router>, document.getElementById('app'));
