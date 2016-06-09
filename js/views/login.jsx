@@ -1,6 +1,9 @@
+"use strict";
+
 import React       from 'react';
 import BasicInput  from 'appRoot/components/basicInput';
 import Actions     from 'appRoot/actions';
+import ActionStore from 'appRoot/actionStore';
 
 export default React.createClass({
 	getInitialState: function () { return {}; },
@@ -26,7 +29,13 @@ export default React.createClass({
 				this.setState({'loginError': 'bad username or password'});
 			}.bind(this))
 			;*/
+
 		Actions.login(detail.username, detail.password);
+		ActionStore.listen(function(data) {
+			if(!data.isLogged) {
+				this.setState({'loginError': 'bad username or password'});
+			}
+		}.bind(this));
 	},
 	render: function () {
 		return (
