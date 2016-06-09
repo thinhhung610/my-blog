@@ -12,7 +12,7 @@ var Actions = Reflux.createActions({
 	},
 	'login': {
 		asyncResult: true,
-		children: ['completed', 'failed']
+		children: ['completed', 'failed', 'isLogged']
 	},
 	'logOut': {},
 	'createUser': {
@@ -28,14 +28,14 @@ var Actions = Reflux.createActions({
 Reflux.createStore({
 	listenables: Actions,
 	onLogin: function() {
-		console.log(123);
+		console.log('on login');
 	},
 	onLoginCompleted: function() {
-		console.log("SUCCESS", arguments);
+		console.log("SUCCESS");
 		hashHistory.push('/');
 	},
 	onLoginFailed: function() {
-		console.log("ERROR", arguments);
+		console.log("ERROR");
 	}
 });
 

@@ -26,7 +26,9 @@ export default React.createClass({
 				this.setState({'loginError': 'bad username or password'});
 			}.bind(this))
 			;*/
+
 		Actions.login(detail.username, detail.password);
+		this.setState({'loginError': 'bad username or password'});
 	},
 	render: function () {
 		return (
