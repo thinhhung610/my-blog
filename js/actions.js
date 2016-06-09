@@ -1,11 +1,11 @@
 "use strict";
 
 import Reflux from 'reflux';
-import { hashHistory } from 'react-router';
 
 var Actions = Reflux.createActions({
 	'getPost': {
-		asyncResult: true
+		asyncResult: true,
+		children: ['completed', 'failed']
 	},
 	'modifyPost': {
 		asyncResult: true
@@ -23,20 +23,6 @@ var Actions = Reflux.createActions({
 	},
 	'search': {},
 	'getSessionContext': {}
-});
-
-Reflux.createStore({
-	listenables: Actions,
-	onLogin: function() {
-		console.log('on login');
-	},
-	onLoginCompleted: function() {
-		console.log("SUCCESS");
-		hashHistory.push('/');
-	},
-	onLoginFailed: function() {
-		console.log("ERROR");
-	}
 });
 
 export default Actions;
