@@ -24,9 +24,9 @@ var ActionStore = Reflux.createStore({
 		this.state.isLogged = false;
 		this.trigger(this.state);
 	},
-	onGetPostCompleted: function(result) {
-		// console.log(result);
-		this.state.post = result;
+	onGetPostCompleted: function(res) {
+		// console.log(res);
+		this.state.post = res;
 		this.state.loading = false;
     this.trigger(this.state);
 	},
@@ -35,7 +35,20 @@ var ActionStore = Reflux.createStore({
 		this.state.loading = false;
 		this.state.err = msg;
     this.trigger(this.state);
-	}
+	},
+	onModifyPostCompleted: function(res) {
+		// console.log(res);
+		this.state.post = res.body;
+		this.state.loading = false;
+    this.trigger(this.state);
+	},
+	onModifyPostFailed: function(msg) {
+		// console.log(msg);
+		this.state.post = null;
+		this.state.loading = false;
+		this.state.err = msg;
+    this.trigger(this.state);
+	},
 });
 
 export default ActionStore;

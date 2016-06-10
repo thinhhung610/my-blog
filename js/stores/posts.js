@@ -55,7 +55,8 @@ export default Reflux.createStore({
             this.posts.push(res.body);
           }
         } else {
-          Actions.modifyPost.completed();
+          // Actions.modifyPost.completed();
+          Actions.modifyPost.failed('Cannot create this post.');
         }
       }.bind(this));
     }

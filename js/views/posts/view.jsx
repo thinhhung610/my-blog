@@ -74,9 +74,9 @@ export default React.createClass({
 			return <Loader />;
 		}
 
-		var post = this.state.post,
-				user = this.getUserFromPost(post),
-				name = user.firstName && user.lastName ? (user.firstName + ' ' + user.lastName) : (user.firstName ? user.firstName : user.username);
+		var post = this.state.post;
+		var user = this.getUserFromPost(post);
+		var name = user.firstName && user.lastName ? (user.firstName + ' ' + user.lastName) : (user.firstName ? user.firstName : user.username);
 
 		return this.props.mode === 'summary' ? (
 			<li className="post-view-summary">

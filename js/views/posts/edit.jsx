@@ -24,7 +24,10 @@ export default React.createClass({
 		return {
 			loading: true,
 			validity: {},
-			post: {}
+			post: {
+				title: '',
+				body: ''
+			}
 		};
 	},
 	constraints: {
@@ -105,7 +108,17 @@ export default React.createClass({
 				date: Moment().valueOf(), // unix UTC milliseconds
 				summary: summary
 			}, this.postId);
-			hashHistory.push(`/posts/${this.postId}`);
+			// hashHistory.push(`/posts/${this.postId}`);
+			this.unsubscribe = ActionStore.listen(function(data) {
+				console.log(data);
+				if(data.err) {
+					this.setState({ error: data.err, loading: data.loading });
+				}
+				else if(data.post) {
+					console.log(data.post);
+					hashHistory.push(`/posts/${data.post.id}`);
+				}
+			}.bind(this))
 		}
 	},
 	titleChange: function (e) {
@@ -125,10 +138,11 @@ export default React.createClass({
 						type="text"
 						ref="title"
 						name="title"
-						defaultValue={this.state.post.title}
 						error={this.state.validity.title}
+						value={this.state.post.title}
 						onChange={this.titleChange}
-						placeholder="post title"/>
+						placeholder="post title"
+					/>
 					<hr/>
 					<br/>
 					<div className="rich-editor">
