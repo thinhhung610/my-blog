@@ -11,6 +11,10 @@ var Actions = Reflux.createActions({
 		asyncResult: true,
 		children: ['completed', 'failed']
 	},
+	'removePost': {
+		asyncResult: true,
+		children: ['completed', 'failed']
+	},
 	'login': {
 		asyncResult: true,
 		children: ['completed', 'failed', 'isLogged']

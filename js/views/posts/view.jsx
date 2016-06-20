@@ -95,7 +95,11 @@ export default React.createClass({
 				user.id === this.state.session.id ? (
 				<div>
 					<Link to={`/posts/${post.id}/edit`}>
-						<button>edit post</button>
+						<button>edit</button>
+					</Link>
+					&nbsp;
+					<Link to={`/posts/${post.id}/remove`}>
+						<button>remove</button>
 					</Link>
 				</div>
 				) : ''

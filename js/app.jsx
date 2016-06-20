@@ -9,6 +9,7 @@ import Login     from 'appRoot/views/login';
 import PostList  from 'appRoot/views/posts/list';
 import PostView  from 'appRoot/views/posts/view';
 import PostEdit  from 'appRoot/views/posts/edit';
+import PostDel   from 'appRoot/views/posts/remove';
 import UserList  from 'appRoot/views/users/list';
 import UserView  from 'appRoot/views/users/view';
 import UserEdit  from 'appRoot/views/users/edit';
@@ -44,7 +45,11 @@ let routes = (
   			path="/posts/:postId/edit"
   			component={ PostEdit }
   		/>
-          <Route
+      <Route
+        path="/posts/:postId/remove"
+        component={ PostDel }
+      />
+      <Route
   			path="posts/:postId"
   			component={ PostView }
   		/>

@@ -61,5 +61,17 @@ export default Reflux.createStore({
       }.bind(this));
     }
     Config.loadTimeSimMs ? setTimeout(req.bind(this), Config.loadTimeSimMs) : req();
+  },
+  onRemovePost: function(id) {
+    function req() {
+      Request.del(this.endpoint + '/' + id).end(function(err, res) {
+        if(res.ok) {
+          Actions.removePost.completed(res);
+        } else {
+          Actions.removePost.failed(err);
+        }
+      });
+    }
+    Config.loadTimeSimMs ? setTimeout(req.bind(this), Config.loadTimeSimMs) : req();
   }
 });

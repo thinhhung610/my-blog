@@ -49,6 +49,17 @@ var ActionStore = Reflux.createStore({
 		this.state.err = msg;
     this.trigger(this.state);
 	},
+	onRemovePostCompleted: function(res) {
+		console.log(res);
+		this.state.loading = false;
+		this.trigger(this.state);
+	},
+	onRemovePostFailed: function(res) {
+		console.log(res);
+		this.state.loading = false;
+		this.state.err = res;
+		this.trigger(this.state);
+	},
 });
 
 export default ActionStore;

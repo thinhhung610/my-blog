@@ -27,7 +27,8 @@ export default React.createClass({
 			post: {
 				title: '',
 				body: ''
-			}
+			},
+			error: ''
 		};
 	},
 	constraints: {
@@ -60,11 +61,11 @@ export default React.createClass({
 					this.setState({ error: data.err, loading: data.loading });
 				}
 				else if(data.post) {
-					var that = this;
+					// var that = this;
 					setTimeout(function () {
-						that.setState({ post: data.post, loading: data.loading });
-						that.initQuill(data.post.body);
-					}, 2000);
+						this.setState({ post: data.post, loading: data.loading });
+						this.initQuill(data.post.body);
+					}.bind(this), 2000);
 				}
 			}.bind(this));
 		}
