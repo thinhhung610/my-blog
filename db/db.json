@@ -15,6 +15,46 @@
       "date": 1466242778242,
       "summary": "Hello World!\nThis is my story...\n\n\n",
       "id": 2
+    },
+    {
+      "title": "Natural",
+      "body": "<div>Hello World!</div><div><b>This</b> is my story...</div><div>post 1</div>",
+      "user": 2,
+      "date": 1467449752523,
+      "summary": "Hello World!\nThis is my story...\npost 1\n",
+      "id": 3
+    },
+    {
+      "title": "Climate and weather",
+      "body": "<div>Hello World!</div><div><b>This</b> is my story...</div><div>So hot...</div>",
+      "user": 2,
+      "date": 1467449834042,
+      "summary": "Hello World!\nThis is my story...\nSo hot...\n",
+      "id": 4
+    },
+    {
+      "title": "React",
+      "body": "<div>Hello World!</div><div><b>This</b> is my story...</div><div>React is so interesting</div>",
+      "user": 2,
+      "date": 1467449905372,
+      "summary": "Hello World!\nThis is my story...\nReact is so interesting\n",
+      "id": 5
+    },
+    {
+      "title": "Animal",
+      "body": "<div>Hello World!</div><div><b>This</b> is my story...</div><div>The snape</div>",
+      "user": 2,
+      "date": 1467450024087,
+      "summary": "Hello World!\nThis is my story...\nThe snape\n",
+      "id": 6
+    },
+    {
+      "title": "About me!",
+      "body": "<div>Nothing...</div>",
+      "user": 1,
+      "date": 1467450573182,
+      "summary": "Nothing...\n",
+      "id": 7
     }
   ],
   "users": [

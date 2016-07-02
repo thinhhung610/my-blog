@@ -8,6 +8,7 @@ import Config from 'appRoot/appConfig';
 export default Reflux.createStore({
   listenables: Actions,
   endpoint: Config.apiRoot + '/posts',
+  /*
   posts: [],
   // called when mixin is used to init the component state
   getInitialState: function() {
@@ -22,6 +23,52 @@ export default Reflux.createStore({
         console.log(err);
       }
     }.bind(this));
+  },
+  */
+  // posts, init, getInitialState are removed.
+  // getPostsByPage handles list requests
+  getPostsByPage: function(page = 1, params) {
+    var start = Config.pageSize * (page - 1),
+        end = start + Config.pageSize,
+        query = {
+          '_sort' : 'date',
+          '_order' : 'DESC',
+          '_start' : start,
+          '_end' : end
+        },
+        that = this;
+
+    if(typeof params === 'object') {
+      // ES6 extend object
+      Object.assign(query, params);
+    }
+
+    if(this.currentRequest) {
+      this.currentRequest.abort();
+      this.currentRequest = null;
+    }
+
+    return new Promise(function(resolve, reject) {
+      that.currentRequest = Request.get(that.endpoint);
+      that.currentRequest.query(query).end(function(err, res) {
+        var results = res.body;
+
+        function complete() {
+          resolve({
+            start: query._start,
+            end: query._end,
+            results: results
+          });
+        }
+
+        if(res.ok) {
+          Config.loadTimeSimMs ? setTimeout(complete, Config.loadTimeSimMs) : complete();
+        } else {
+          reject(Error(err));
+        }
+        this.currentRequest = null;
+      }.bind(that));
+    });
   },
   onGetPost: function(id) {
     function req() {
